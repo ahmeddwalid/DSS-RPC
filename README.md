@@ -113,7 +113,7 @@ Then there's a transient range, this group is reserved for applications that gen
 
 And the rest groups are reserved for future use and should not be used, idky tho
 
-## XDR (Wallahu A3lam)
+## XDR
 
 This handles Serialization and Deserialization as mentioned, these are needed becuse not all machines store/manage data the same way. So we use XDR to standardize these data so it can be sent over and be understood (Something like a protocol, but it's called "routines" for some reason)
 
@@ -127,7 +127,7 @@ Now onto the coding part
 
 This should be installed on your machine by now
 
-rpcgen is a protocol compiler, it basically takes care of writing alot of the code for you that you would otherwise have to write it all yourself, it generates all the functions that the client and servers use to communicate, the XDR routines for handling data and the header files to for network configurations and so.
+[rpcgen](https://man.freebsd.org/cgi/man.cgi?query=rpcgen&sektion=1&manpath=FreeBSD+5.0-RELEASE) is a protocol compiler, it basically takes care of writing alot of the code for you that you would otherwise have to write it all yourself, it generates all the functions that the client and servers use to communicate, the XDR routines for handling data and the header files to for network configurations and so.
 
 This let's you focus on the important part which is the logic of your applicaiton
 
@@ -153,15 +153,15 @@ We first need to define our remote program and the procedure it will offer in an
   
   We define a structure named string_pair to hold our two input strings. Using a structure allows us to pass both strings as a single argument to our remote procedure. The <> after string indicates that the strings can be of arbitrary length
 
-- **program SUBSTRING_PROG { ... } = 0xD2B44F1;**
+- **program SUBSTRING_PROG { ... } = 123456789;**
   
-  This declares our remote program named SUBSTRING_PROG. The number 0xD2B44F1 is a program number, which uniquely identifies this RPC service on the network. You should choose a number within the user-defined range (0x20000000 - 0x3fffffff) for your own applications . 
+  This declares our remote program named SUBSTRING_PROG. The number 123456789 is a program number, which uniquely identifies this RPC service on the network. You should choose a number within the user defined range (0x20000000 - 0x3fffffff) for your own applications.
   
-  You can use a decimal representation here (`123456789` in decimal is the same as `0x75BCD15` in hexadecimal which is in range)
+  I used a decimal representation here (`123456789` in decimal is the same as `0x75BCD15` in hexadecimal which is in range)
 
 - **version SUBSTRING_VERS { ... } = 1;**
   
-  Inside the program, we define a version named SUBSTRING_VERS with the version number 115 . This allows you to evolve your service in the future while maintaining compatibility with older clients.
+  Inside the program, we define a version named SUBSTRING_VERS with the version number. This allows you to evolve your service in the future while maintaining compatibility with older clients.
 
 - **bool IS_SUBSTRING(string_pair) = 1;**
   

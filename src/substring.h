@@ -20,7 +20,7 @@ struct string_pair {
 };
 typedef struct string_pair string_pair;
 
-#define SUBSTRING_PROG 0xD2B44F1
+#define SUBSTRING_PROG 123456789
 #define SUBSTRING_VERS 1
 
 #if defined(__STDC__) || defined(__cplusplus)
