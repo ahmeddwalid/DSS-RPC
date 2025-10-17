@@ -13,8 +13,6 @@
     <a href="https://github.com/ahmeddwalid/Finjan/pulls">Request Feature</a>
   </p>
 
-**This is written by me and not AI generated (fr, my wrist hurts)**
-I read these two papers from FreeBSD to understand 
 
 1. [Remote Procedure Call Programming Guide](https://docs-archive.freebsd.org/44doc/psd/23.rpc/paper.pdf)
 
